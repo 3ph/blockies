@@ -3,7 +3,7 @@
 </p>
 
 [![pub.dev][pub-dev-shield]][pub-dev-url]
-[![pub package]()](https://pub.dartlang.org/packages/blockies) ![Build status]
+[![Build Status](https://shields.io/github/workflow/status/nextchapterstudio/blockies/build?logo=github&logoColor=white)][pub-dev-url]
 [![Stars][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
@@ -45,7 +45,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[pub-dev-shield]: https://img.shields.io/pub/v/blockies.svg
+[pub-dev-shield]: https://img.shields.io/pub/v/blockies?logo=dart&logoColor=white
 [pub-dev-url]: https://pub.dev/packages/blockies
 [stars-shield]: https://img.shields.io/github/stars/nextchapterstudio/blockies.svg?style=for-the-badge&logo=github&colorB=deeppink&label=stars
 [stars-url]: https://packagist.org/packages/nextchapterstudio/blockies
