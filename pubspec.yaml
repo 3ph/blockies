@@ -1,0 +1,27 @@
+name: blockies
+description: An example app for Blockies package
+version: 0.1
+homepage: https://github.com/nextchapterstudio/blockies
+repository: https://github.com/nextchapterstudio/blockies
+issue_tracker: https://github.com/nextchapterstudio/blockies/issues
+
+
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  fixnum: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
