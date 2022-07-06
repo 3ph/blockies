@@ -47,9 +47,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [pub-dev-shield]: https://img.shields.io/pub/v/blockies?logo=dart&logoColor=white
 [pub-dev-url]: https://pub.dev/packages/blockies
-[stars-shield]: https://img.shields.io/github/stars/nextchapterstudio/blockies.svg?style=for-the-badge&logo=github&colorB=deeppink&label=stars
+[stars-shield]: https://img.shields.io/github/stars/nextchapterstudio/blockies?logo=github&colorB=deeppink&label=stars
 [stars-url]: https://packagist.org/packages/nextchapterstudio/blockies
-[issues-shield]: https://img.shields.io/github/issues/nextchapterstudio/blockies.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/nextchapterstudio/blockies
 [issues-url]: https://github.com/nextchapterstudio/blockies/issues
-[license-shield]: https://img.shields.io/github/license/nextchapterstudio/blockies.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/nextchapterstudio/blockies
 [license-url]: https://github.com/nextchapterstudio/blockies/blob/master/LICENSE
