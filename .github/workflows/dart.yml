@@ -1,42 +1,59 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+name: build
 
-name: Dart
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push, pull_request]
 
 jobs:
-  build:
+  build-dart-latest:
+
     runs-on: ubuntu-latest
 
+    container:
+      image:  google/dart:latest
+
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: dart pub get
+    - name: Run dependency validator
+      run: dart pub run dependency_validator
+    - name: Run analyzer
+      run:  |
+        dart analyze --fatal-warnings --fatal-infos .
+    - name: Run formatter
+      run: dart format --set-exit-if-changed .
+    - name: Self scan
+      run: dart run bin/metrics.dart --reporter=github lib
 
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+  build-dart-2-8:
 
-      - name: Install dependencies
-        run: flutter pub get
+    runs-on: ubuntu-latest
 
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: dart format --output=none --set-exit-if-changed .
+    container:
+      image:  google/dart:2.8.4
 
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
-      - name: Analyze project source
-        run: dart analyze
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: pub downgrade
+    - name: Run dartanalyzer
+      run: dartanalyzer --fatal-warnings --fatal-infos --fatal-lints bin/ lib/ test/
+    - name: Run tests
+      run: pub run test
 
-      # Your project will need to have tests in test/ and a dependency on
-      # package:test for this step to succeed. Note that Flutter projects will
-      # want to change this to 'flutter test'.
-      - name: Run tests
-        run: dart test
+  build-dart-dev:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image:  google/dart:dev
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: dart pub get
+    - name: Run analyzer
+      run:  |
+        dart analyze --fatal-warnings --fatal-infos bin
+        dart analyze --fatal-warnings --fatal-infos lib
+    - name: Run tests
+      run: dart test
