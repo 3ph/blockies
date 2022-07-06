@@ -16,6 +16,7 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/*
+*/.idea/
 
 # Visual Studio Code related
 .classpath

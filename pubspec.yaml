@@ -1,6 +1,6 @@
 name: blockies
 description: An example app for Blockies package
-version: 0.1
+version: 0.1.0
 homepage: https://github.com/nextchapterstudio/blockies
 repository: https://github.com/nextchapterstudio/blockies
 issue_tracker: https://github.com/nextchapterstudio/blockies/issues
