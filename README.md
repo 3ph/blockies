@@ -9,7 +9,7 @@
 [![MIT License][license-shield]][license-url]
 
 ## Blockies
-A tiny library for generating blocky identicons. Direct port of JavaScript library [download-blockies](@download/blockies).
+A tiny library for generating blocky identicons. Direct port of JavaScript library [@download/blockies](https://www.npmjs.com/package/@download/blockies).
 
 ## Introduction
 Blockies library generates a variety of an Identicon which is a visual representation of a hash value (eg. blockchain address), that serves to identify a user of a computer system as a form of avatar while protecting the user's privacy.
@@ -55,4 +55,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [issues-url]: https://github.com/nextchapterstudio/blockies/issues
 [license-shield]: https://img.shields.io/github/license/nextchapterstudio/blockies.svg?style=for-the-badge
 [license-url]: https://github.com/nextchapterstudio/blockies/blob/master/LICENSE
-[download-blockies]: https://www.npmjs.com/package/@download/blockies
