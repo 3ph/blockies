@@ -1,6 +1,9 @@
 # .github/workflows/my_flutter_package.yaml
 name: Dart CI
-on: pull_request
+on:
+  push:
+    branches: [ main ]
+  pull_request:
 
 jobs:
   build:
