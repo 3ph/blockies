@@ -28,7 +28,7 @@ class Blockies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _BlockiesPainter(
+      painter: BlockiesPainter(
         seed: seed,
         size: size,
         color: color,
@@ -41,8 +41,8 @@ class Blockies extends StatelessWidget {
   }
 }
 
-class _BlockiesPainter extends CustomPainter {
-  _BlockiesPainter({
+class BlockiesPainter extends CustomPainter {
+  BlockiesPainter({
     required this.seed,
     this.size = 8,
     this.color,
@@ -58,19 +58,19 @@ class _BlockiesPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    _randSeed = _createRandSeed(seed: seed);
+    _randSeed = createRandSeed(seed: seed);
     // NOTE: keep the same order otherwise the resulting blocky will be affected
     final colorPaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = color ?? _createColor();
+      ..color = color ?? createColor().toColor();
     final bgPaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = bgColor ?? _createColor();
+      ..color = bgColor ?? createColor().toColor();
     final spotPaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = spotColor ?? _createColor();
+      ..color = spotColor ?? createColor().toColor();
 
-    final imageData = _createImageData(this.size);
+    final imageData = createImageData(this.size);
     final width = sqrt(imageData.length);
     final blockSize = Size(size.width / this.size, size.height / this.size);
 
@@ -94,7 +94,8 @@ class _BlockiesPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
-  List<int> _createRandSeed({required String seed}) {
+  @visibleForTesting
+  static List<int> createRandSeed({required String seed}) {
     var randSeed = List<int>.filled(4, 0);
 
     for (int i = 0; i < seed.length; i++) {
@@ -106,7 +107,8 @@ class _BlockiesPainter extends CustomPainter {
     return randSeed;
   }
 
-  double _rand() {
+  @visibleForTesting
+  double rand() {
     // based on Java's String.hashCode(), expanded to 4 32bit values
     final t = Int32(_randSeed[0] ^ Int32(_randSeed[0] << 11).toInt());
     final third = Int32(_randSeed[3]);
@@ -119,17 +121,19 @@ class _BlockiesPainter extends CustomPainter {
     return (Int32(_randSeed[3] >>> 0)).toInt() / ((1 << 31) >>> 0);
   }
 
-  Color _createColor() {
+  @visibleForTesting
+  HSLColor createColor() {
     //saturation is the whole color spectrum
-    final h = (_rand() * 360).floorToDouble();
+    final h = (rand() * 360).floorToDouble();
     //saturation goes from 40 to 100, it avoids greyish colors
-    final s = ((_rand() * 60) + 40);
+    final s = ((rand() * 60) + 40);
     //lightness can be anything from 0 to 100, but probabilities are a bell curve around 50%
-    final l = ((_rand() + _rand() + _rand() + _rand()) * 25);
-    return HSLColor.fromAHSL(1, h, s / 100, l / 100).toColor();
+    final l = ((rand() + rand() + rand() + rand()) * 25);
+    return HSLColor.fromAHSL(1, h, s / 100, l / 100);
   }
 
-  List<int> _createImageData(int size) {
+  @visibleForTesting
+  List<int> createImageData(int size) {
     final width = size; // Only support square icons for now
     final height = size;
 
@@ -142,7 +146,7 @@ class _BlockiesPainter extends CustomPainter {
       for (var x = 0; x < dataWidth; x++) {
         // this makes foreground and background color to have a 43% (1/2.3) probability
         // spot color has 13% chance
-        row.add((_rand() * 2.3).floor());
+        row.add((rand() * 2.3).floor());
       }
       final r = row.sublist(0, mirrorWidth).toList();
       row.addAll(r.reversed.toList());
@@ -154,6 +158,12 @@ class _BlockiesPainter extends CustomPainter {
 
     return data;
   }
+
+  @visibleForTesting
+  set randSeed(List<int> seed) => _randSeed = seed;
+
+  @visibleForTesting
+  List<int> get randSeed => _randSeed;
 
   // PRIVATE:
   List<int> _randSeed = [];
