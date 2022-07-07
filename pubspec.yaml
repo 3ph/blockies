@@ -1,6 +1,6 @@
 name: blockies
 description: A tiny library for generating blocky identicons. Port of JS library @download/blockies.
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/nextchapterstudio/blockies
 repository: https://github.com/nextchapterstudio/blockies
 issue_tracker: https://github.com/nextchapterstudio/blockies/issues

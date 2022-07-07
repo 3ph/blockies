@@ -3,7 +3,7 @@
 </p>
 
 [![pub.dev][pub-dev-shield]][pub-dev-url]
-[![Build Status](https://shields.io/github/workflow/status/nextchapterstudio/blockies/build?logo=github&logoColor=white)][pub-dev-url]
+[![Dart CI](https://github.com/nextchapterstudio/blockies/actions/workflows/dart.yml/badge.svg)](https://github.com/nextchapterstudio/blockies/actions/workflows/dart.yml)
 [![Stars][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
